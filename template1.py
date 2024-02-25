@@ -1,4 +1,4 @@
-# a notebook for different topics of Python learning path, with several pages for each topic
+# A notebook for different topics of Python learning path, with several pages for each topic
 
 from fpdf import FPDF
 import pandas as pd
@@ -19,26 +19,23 @@ for index, row in df.iterrows():
     for y in range(20, 298, 10):
         pdf.line(10, y, 200, y)
 
-    # set footer to parent pages
+    # Set footer to parent pages
     pdf.ln(265)
     pdf.set_font(family='Arial', style="I", size=10)
     pdf.set_text_color(180, 180, 180)
     pdf.cell(w=0, h=10, txt=row["Topic"], border=0, ln=1, align='R')
 
-
     for i in range(1, row["Pages"]):
         pdf.add_page()
 
-        # set footer to children pages
+        # Set footer to children pages
         pdf.ln(277)
         pdf.set_font(family='Arial', style="I", size=10)
         pdf.set_text_color(180, 180, 180)
         pdf.cell(w=0, h=10, txt=row["Topic"], border=0, ln=1, align='R')
 
-        # add lines for parent pages
+        # Add lines for parent pages
         for y in range(20, 298, 10):
             pdf.line(10, y, 200, y)
-
-
 
 pdf.output("output.pdf")
